@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Silhouette from "../components/Silhouette";
 import SectionTitle from "../components/SectionTitle";
 import Reveal from "../components/Reveal";
 
@@ -20,7 +19,7 @@ const univers = [
   {
     title: "Soins INDIBA® visage & corps",
     desc: "La radiofréquence 448 kHz : fermeté, éclat et silhouette remodelée.",
-    prix: "dès 100 €",
+    prix: "dès 100 €",
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="url(#goldIc)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 5 q-8 2 -9 12 q-.4 5 -3 8 q-1.6 2 .8 2.6 l2.6 .6 q-1 3.4 1.4 4 q2.6 .6 2 3.4 q-.6 3.4 4.2 3.4 q4 0 6 -2" />
@@ -32,7 +31,7 @@ const univers = [
   {
     title: "Onglerie",
     desc: "Manucure soignée, vernis semi-permanent, french : des mains sublimées.",
-    prix: "dès 25 €",
+    prix: "dès 25 €",
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="url(#goldIc)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <path d="M13 34 v-12 q0 -3 3 -3 q3 0 3 3 v6" />
@@ -45,7 +44,7 @@ const univers = [
   {
     title: "Épilations femme & homme",
     desc: "Sourcils, visage, corps : une épilation douce et précise pour toutes et tous.",
-    prix: "dès 10 €",
+    prix: "dès 10 €",
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="url(#goldIc)" strokeWidth="1.7" strokeLinecap="round">
         <path d="M6 21 q14 -13 28 0" />
@@ -58,7 +57,7 @@ const univers = [
   {
     title: "Massages spa aux huiles chaudes",
     desc: "Un moment de détente profonde dans une atmosphère douce et raffinée.",
-    prix: "dès 45 €",
+    prix: "dès 45 €",
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="url(#goldIc)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20 8 q4 6 0 12 q-4 -6 0 -12z" />
@@ -79,97 +78,106 @@ export default function Home() {
       <div className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="script small">Nouveau sur La Grande-Motte</span>
-            <h1>
-              Votre institut
-              <span className="script">Perlina</span>
-            </h1>
-            <div className="byl">— BY L —</div>
+            <p className="hero-loc">La Grande-Motte · Institut de beauté</p>
+            <Image
+              className="hero-wordmark logo-mark"
+              src="/images/logo-perlina.jpg"
+              alt="Perlina By L"
+              width={1200}
+              height={546}
+              priority
+            />
+            <span className="script tagline">Révélez votre beauté naturelle</span>
             <p className="lead">
-              Un écrin de douceur au bord de la Méditerranée. Venez découvrir la technologie{" "}
-              <strong>INDIBA® Deep Beauty</strong> et révéler votre beauté naturelle.
+              Un écrin de douceur au bord de la Méditerranée, où le savoir-faire esthétique rencontre la technologie{" "}
+              <strong>INDIBA® Deep Beauty</strong>.
             </p>
             <div className="btn-row">
-              <Link className="btn btn-or" href="/reservation">Réserver un soin</Link>
-              <Link className="btn btn-ghost" href="/soins">Découvrir nos soins</Link>
+              <Link className="btn btn-or" href="/reservation">Prendre rendez-vous</Link>
+              <Link className="btn btn-ghost" href="/soins">La carte des soins</Link>
             </div>
           </div>
-          <Silhouette />
+          <div className="hero-illu">
+            <Image
+              className="logo-mark"
+              src="/images/logo-illustration.jpg"
+              alt="Illustration Perlina — femme au chignon entourée de perles"
+              width={1400}
+              height={851}
+              priority
+            />
+          </div>
         </div>
       </div>
 
       {/* L'INSTITUT */}
       <section>
         <div className="container">
-          <Reveal>
-            <SectionTitle eyebrow="L'institut">
-              Un écrin au cœur de <span className="script">La Grande-Motte</span>
-            </SectionTitle>
-          </Reveal>
-          <div className="galerie">
-            {[
-              { src: "/images/devanture.jpg", cap: "15 rue Frédéric Mistral", alt: "Devanture de l'institut Perlina By L" },
-              { src: "/images/salon-1.jpg", cap: "Votre espace d'accueil", alt: "Espace d'accueil de l'institut" },
-              { src: "/images/salon-2.jpg", cap: "L'espace onglerie", alt: "Espace onglerie de l'institut" },
-            ].map((g, i) => (
-              <Reveal as="figure" key={g.src} delay={i * 120}>
-                <Image src={g.src} alt={g.alt} width={1200} height={1600} sizes="(max-width:860px) 100vw, 33vw" />
-                <figcaption>{g.cap}</figcaption>
-              </Reveal>
-            ))}
+          <SectionTitle eyebrow="L'institut" pearls>
+            Un écrin au cœur de <em>La Grande-Motte</em>
+          </SectionTitle>
+          <div className="mosaic">
+            <Reveal as="figure" className="m-a">
+              <Image src="/images/devanture.jpg" alt="Devanture de l'institut Perlina By L" fill={false} width={1200} height={1600} sizes="(max-width:860px) 100vw, 42vw" style={{ height: "100%", objectFit: "cover" }} />
+              <figcaption>15 rue Frédéric Mistral</figcaption>
+            </Reveal>
+            <Reveal as="figure" className="m-b" delay={100}>
+              <Image src="/images/salon-2.jpg" alt="L'espace onglerie de l'institut" width={1200} height={1600} sizes="(max-width:860px) 100vw, 58vw" style={{ height: "100%", objectFit: "cover" }} />
+              <figcaption>L'espace onglerie</figcaption>
+            </Reveal>
+            <Reveal as="figure" className="m-c" delay={200}>
+              <Image src="/images/salon-1.jpg" alt="L'espace d'accueil de l'institut" width={1200} height={1600} sizes="(max-width:860px) 100vw, 33vw" style={{ height: "100%", objectFit: "cover" }} />
+              <figcaption>Votre espace d'accueil</figcaption>
+            </Reveal>
+            <Reveal as="figure" className="m-d" delay={300}>
+              <Image src="/images/manucure.jpg" alt="Manucure réalisée à l'institut" width={1200} height={1600} sizes="(max-width:860px) 100vw, 25vw" style={{ height: "100%", objectFit: "cover" }} />
+              <figcaption>Réalisation maison</figcaption>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* INDIBA */}
       <div className="indiba">
-        <div className="container">
-          <Reveal>
-            <span className="script" style={{ fontSize: "1.9rem" }}>Venez découvrir la technologie</span>
-          </Reveal>
-          <div className="indiba-grid">
-            <Reveal>
-              <Image className="indiba-logo-img" src="/images/indiba-logo.jpg" alt="INDIBA Deep Beauty" width={400} height={163} />
-              <p>
-                <strong>INDIBA® EDNA PRO MAX</strong> — la radiofréquence monopolaire brevetée <strong>448 kHz</strong>,
-                référence mondiale de la régénération tissulaire. Sans douleur, sans éviction sociale, des résultats
-                visibles dès les premières séances.
-              </p>
-              <ul className="benefits">
-                <li><span className="pearl sm" /><span><b>Améliore</b> la microcirculation</span></li>
-                <li><span className="pearl sm" /><span><b>Draine</b> les excès d&apos;eau des tissus</span></li>
-                <li><span className="pearl sm" /><span><b>Stimule</b> le collagène et l&apos;élastine</span></li>
-                <li><span className="pearl sm" /><span><b>Lisse et raffermit</b> la peau — visage, corps et cheveux</span></li>
-              </ul>
-            </Reveal>
-            <Reveal delay={150}>
-              <figure className="aa-card">
-                <Image src="/images/aa-visage.jpg" alt="Avant / après soin visage radiofréquence INDIBA" width={1000} height={1237} sizes="(max-width:860px) 100vw, 50vw" />
-                <figcaption>
-                  <span className="t">Soin visage radiofréquence</span>
-                  <span className="s">Après 1 séance</span>
-                </figcaption>
-              </figure>
-            </Reveal>
+        <div className="container indiba-grid">
+          <div>
+            <p className="eyebrow">La technologie</p>
+            <Image className="indiba-logo-img" src="/images/indiba-logo.jpg" alt="INDIBA Deep Beauty" width={400} height={163} />
+            <p>
+              <strong>INDIBA® EDNA PRO MAX</strong> — la radiofréquence monopolaire brevetée <strong>448&nbsp;kHz</strong>,
+              référence de la régénération tissulaire. Sans douleur, sans éviction sociale, des résultats visibles dès
+              les premières séances.
+            </p>
+            <ul className="benefits">
+              <li><span className="pearl sm" /><span><b>Améliore</b> la microcirculation</span></li>
+              <li><span className="pearl sm" /><span><b>Draine</b> les excès d'eau des tissus</span></li>
+              <li><span className="pearl sm" /><span><b>Stimule</b> le collagène et l'élastine</span></li>
+              <li><span className="pearl sm" /><span><b>Lisse et raffermit</b> la peau — visage, corps et cheveux</span></li>
+            </ul>
           </div>
+          <figure className="aa-card">
+            <Image src="/images/aa-visage.jpg" alt="Avant / après soin visage radiofréquence INDIBA" width={1000} height={1237} sizes="(max-width:860px) 100vw, 50vw" />
+            <figcaption>
+              <span className="t">Soin visage radiofréquence</span>
+              <span className="s">Après 1 séance</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
 
       {/* RÉSULTATS */}
       <section style={{ paddingTop: "var(--section)" }}>
         <div className="container">
-          <Reveal>
-            <SectionTitle eyebrow="Résultats">
-              Des résultats <span className="script">visibles</span>
-            </SectionTitle>
-          </Reveal>
+          <SectionTitle eyebrow="Résultats">
+            Des résultats <em>visibles</em>
+          </SectionTitle>
           <div className="aa-grid">
             {[
               { src: "/images/aa-ventre.jpg", w: 1000, h: 999, t: "Remodelage du ventre", s: "Après 1 séance", alt: "Avant / après remodelage du ventre INDIBA" },
               { src: "/images/aa-silhouette.jpg", w: 1000, h: 1247, t: "Ventre, fesses & dos", s: "Après 3 séances", alt: "Avant / après traitement ventre, fesses et dos INDIBA" },
-              { src: "/images/manucure.jpg", w: 1200, h: 1600, t: "Onglerie — réalisation Perlina", s: "Semi-permanent effet perle", alt: "Manucure semi-permanent réalisée à l'institut" },
+              { src: "/images/pedicure.jpg", w: 1200, h: 1600, t: "Beauté des pieds", s: "Réalisation Perlina", alt: "Pédicure french réalisée à l'institut" },
             ].map((a, i) => (
-              <Reveal as="figure" className="aa-card" key={a.src} delay={i * 120}>
+              <Reveal as="figure" className="aa-card" key={a.src} delay={i * 100}>
                 <Image src={a.src} alt={a.alt} width={a.w} height={a.h} sizes="(max-width:860px) 100vw, 33vw" />
                 <figcaption>
                   <span className="t">{a.t}</span>
@@ -179,7 +187,7 @@ export default function Home() {
             ))}
           </div>
           <p className="aa-note">
-            Photos INDIBA® Deep Beauty France / réalisations de l&apos;institut. Les résultats peuvent varier selon les personnes.
+            Photos INDIBA® Deep Beauty France et réalisations de l'institut. Les résultats peuvent varier selon les personnes.
           </p>
         </div>
       </section>
@@ -187,23 +195,19 @@ export default function Home() {
       {/* UNIVERS */}
       <section>
         <div className="container">
-          <Reveal>
-            <SectionTitle eyebrow="Nos univers">
-              Et révéler votre <span className="script">beauté naturelle</span>
-            </SectionTitle>
-          </Reveal>
+          <SectionTitle eyebrow="Nos univers" center pearls>
+            Quatre univers de <em>soins</em>
+          </SectionTitle>
           <div className="cards">
-            {univers.map((u, i) => (
-              <Reveal key={u.title} delay={i * 100}>
-                <Link href="/soins" className="card" style={{ height: "100%" }}>
-                  <div className="icon-ring">{u.icon}</div>
-                  <h3>{u.title}</h3>
-                  <p>{u.desc}</p>
-                  <div className="sep" />
-                  <span className="prix">{u.prix}</span>
-                  <span className="lien">Découvrir</span>
-                </Link>
-              </Reveal>
+            {univers.map((u) => (
+              <Link href="/soins" className="card" key={u.title}>
+                <div className="icon-ring">{u.icon}</div>
+                <h3>{u.title}</h3>
+                <p>{u.desc}</p>
+                <div className="sep" />
+                <span className="prix">{u.prix}</span>
+                <span className="lien">Découvrir</span>
+              </Link>
             ))}
           </div>
           <div className="center">

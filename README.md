@@ -1,6 +1,6 @@
 # Perlina By L — Site vitrine (Next.js)
 
-Site vitrine de l’institut de beauté **Perlina By L** (La Grande-Motte).
+Site vitrine de l'institut de beauté Perlina By L (La Grande-Motte).
 
 ## Développement local
 
@@ -9,25 +9,24 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
-## Variables d’environnement
+## Déployer sur Vercel
 
-Copier `.env.example` vers `.env.local` :
+**Option 1 — GitHub (recommandé) :** pousser ce dossier sur un repo GitHub, puis sur vercel.com → *Add New Project* → importer le repo. Vercel détecte Next.js automatiquement, aucun réglage nécessaire.
 
-- `NEXT_PUBLIC_SITE_URL` — URL publique (SEO / sitemap)
-- `NEXT_PUBLIC_CONTACT_EMAIL` — email de l’institut (formulaires via mailto)
-
-## Déploiement
+**Option 2 — CLI :**
 
 ```bash
+npm i -g vercel
+vercel             # depuis ce dossier, suivre les prompts
 vercel --prod
 ```
 
 ## Structure
 
-- `app/` — pages App Router
-- `components/` — Header, Footer, Silhouette, formulaires
-- `public/images/` — photos institut & INDIBA®
+- `app/` — pages (App Router) : accueil, `a-propos`, `soins`, `contact`, `reservation`
+- `components/` — Header, Footer, Silhouette animée, formulaires (client components)
+- `public/images/` — photos de l'institut et visuels INDIBA®
 
-## Suite prévue
+## À venir
 
-Réservation temps réel + paiement Stripe + rappels SMS.
+La page réservation est prête à être branchée sur un vrai système (agenda temps réel + paiement Stripe).
