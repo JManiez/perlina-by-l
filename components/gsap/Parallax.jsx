@@ -12,7 +12,7 @@ export default function Parallax({ children, className = "", yPercent = 12 }) {
       const el = ref.current;
       if (!el) return;
       const mm = gsap.matchMedia();
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
+      mm.add("(prefers-reduced-motion: no-preference) and (min-width: 1024px)", () => {
         gsap.fromTo(
           el,
           { yPercent: -yPercent / 2 },

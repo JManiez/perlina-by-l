@@ -1,4 +1,3 @@
-import Image from "next/image";
 import SectionTitle from "../../components/SectionTitle";
 import FadeIn from "../../components/gsap/FadeIn";
 
@@ -13,13 +12,20 @@ export default function APropos() {
         </SectionTitle>
         <div className="apropos-grid">
           <FadeIn className="portrait-img">
-            <Image
-              src="/images/salon-1.jpg"
-              alt="L'accueil de Perlina By L à La Grande-Motte"
-              width={1200}
-              height={1600}
-              sizes="(max-width:860px) 100vw, 45vw"
-            />
+            <picture>
+              <source media="(max-width: 639px)" type="image/webp" srcSet="/images/crops/salon-1-phone.webp" />
+              <source media="(max-width: 639px)" srcSet="/images/crops/salon-1-phone.jpg" />
+              <source media="(max-width: 1023px)" type="image/webp" srcSet="/images/crops/salon-1-tab.webp" />
+              <source media="(max-width: 1023px)" srcSet="/images/crops/salon-1-tab.jpg" />
+              <img
+                src="/images/salon-1.jpg"
+                alt="L'accueil de Perlina By L à La Grande-Motte"
+                width={1200}
+                height={1600}
+                sizes="(max-width:639px) 100vw, (max-width:1023px) 42vw, 45vw"
+                decoding="async"
+              />
+            </picture>
           </FadeIn>
           <FadeIn delay={0.12}>
             <h3 style={{ fontSize: "clamp(1.7rem,3vw,2.1rem)", fontWeight: 400 }}>

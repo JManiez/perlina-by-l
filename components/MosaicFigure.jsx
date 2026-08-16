@@ -1,15 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import FadeIn from "./gsap/FadeIn";
 import Parallax from "./gsap/Parallax";
+import ResponsivePhoto from "./ResponsivePhoto";
 
-export default function MosaicFigure({ src, alt, cap, className, delay = 0, w = 1200, h = 1600, sizes }) {
+export default function MosaicFigure({ name, alt, cap, className, delay = 0, desk = "wide", sizes, priority = false }) {
   return (
     <FadeIn as="figure" className={className} delay={delay}>
       <div className="img-clip">
-        <Parallax yPercent={14}>
-          <Image src={src} alt={alt} width={w} height={h} sizes={sizes} style={{ height: "120%", objectFit: "cover" }} />
+        <Parallax yPercent={8}>
+          <ResponsivePhoto name={name} alt={alt} desk={desk} sizes={sizes} priority={priority} />
         </Parallax>
       </div>
       <figcaption>{cap}</figcaption>

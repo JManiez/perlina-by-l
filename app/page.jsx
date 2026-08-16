@@ -86,34 +86,38 @@ export default function Home() {
           <div className="mosaic">
             <MosaicFigure
               className="m-a"
-              src="/images/salon-1.jpg"
+              name="salon-1"
               alt="L'espace d'accueil de l'institut"
               cap="Votre espace d'accueil"
-              sizes="(max-width:860px) 100vw, 58vw"
+              desk="wide"
+              sizes="(max-width:639px) 100vw, (max-width:1023px) 50vw, 58vw"
             />
             <MosaicFigure
               className="m-b"
-              src="/images/salon-2.jpg"
+              name="salon-2"
               alt="L'espace onglerie de l'institut"
               cap="L'espace onglerie"
               delay={0.1}
-              sizes="(max-width:860px) 100vw, 42vw"
+              desk="wide"
+              sizes="(max-width:639px) 100vw, (max-width:1023px) 50vw, 42vw"
             />
             <MosaicFigure
               className="m-c"
-              src="/images/manucure.jpg"
+              name="manucure"
               alt="Manucure réalisée à l'institut"
               cap="Réalisation maison"
               delay={0.16}
-              sizes="(max-width:860px) 100vw, 42vw"
+              desk="short"
+              sizes="(max-width:639px) 100vw, (max-width:1023px) 50vw, 42vw"
             />
             <MosaicFigure
               className="m-d"
-              src="/images/pedicure.jpg"
+              name="pedicure"
               alt="Beauté des pieds réalisée à l'institut"
               cap="Beauté des pieds"
               delay={0.22}
-              sizes="(max-width:860px) 100vw, 58vw"
+              desk="short"
+              sizes="(max-width:639px) 100vw, (max-width:1023px) 50vw, 58vw"
             />
           </div>
         </div>
@@ -159,13 +163,13 @@ export default function Home() {
           </FadeIn>
           <FadeIn delay={0.12}>
             <div className="aa-frame">
-              <figure className="aa-card inner">
+              <figure className="aa-card inner graphic">
                 <Image
                   src="/images/aa-visage.jpg"
                   alt="Avant / après soin visage radiofréquence INDIBA"
                   width={1000}
                   height={1237}
-                  sizes="(max-width:860px) 100vw, 50vw"
+                  sizes="(max-width:639px) 100vw, (max-width:1023px) 90vw, 50vw"
                 />
                 <figcaption>
                   <span className="t">Soin visage radiofréquence</span>
@@ -184,12 +188,12 @@ export default function Home() {
           </SectionTitle>
           <div className="aa-grid">
             {[
-              { src: "/images/aa-ventre.jpg", w: 1000, h: 999, t: "Remodelage du ventre", s: "Après 1 séance", alt: "Avant / après remodelage du ventre INDIBA" },
-              { src: "/images/aa-silhouette.jpg", w: 1000, h: 1247, t: "Ventre, fesses & dos", s: "Après 3 séances", alt: "Avant / après traitement ventre, fesses et dos INDIBA" },
-              { src: "/images/manucure.jpg", w: 1200, h: 1600, t: "Onglerie Perlina", s: "Semi-permanent", alt: "Manucure semi-permanent réalisée à l'institut" },
+              { src: "/images/aa-ventre.jpg", w: 1000, h: 999, t: "Remodelage du ventre", s: "Après 1 séance", alt: "Avant / après remodelage du ventre INDIBA", graphic: true },
+              { src: "/images/aa-silhouette.jpg", w: 1000, h: 1247, t: "Ventre, fesses & dos", s: "Après 3 séances", alt: "Avant / après traitement ventre, fesses et dos INDIBA", graphic: true },
+              { src: "/images/crops/manucure-tab.jpg", w: 1100, h: 1375, t: "Onglerie Perlina", s: "Semi-permanent", alt: "Manucure semi-permanent réalisée à l'institut" },
             ].map((a, i) => (
-              <FadeIn as="figure" className="aa-card" key={a.src} delay={i * 0.1}>
-                <Image src={a.src} alt={a.alt} width={a.w} height={a.h} sizes="(max-width:860px) 100vw, 33vw" />
+              <FadeIn as="figure" className={`aa-card${a.graphic ? " graphic" : " photo"}`} key={a.src} delay={i * 0.1}>
+                <Image src={a.src} alt={a.alt} width={a.w} height={a.h} sizes="(max-width:639px) 100vw, (max-width:1023px) 50vw, 33vw" />
                 <figcaption>
                   <span className="t">{a.t}</span>
                   <span className="s">{a.s}</span>
