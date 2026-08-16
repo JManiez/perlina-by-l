@@ -22,7 +22,15 @@ export default function SmoothScroll({ children }) {
     gsap.ticker.add(ticker);
     gsap.ticker.lagSmoothing(0);
 
+    const syncMenu = () => {
+      if (document.documentElement.classList.contains("menu-open")) lenis.stop();
+      else lenis.start();
+    };
+    const mo = new MutationObserver(syncMenu);
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
     return () => {
+      mo.disconnect();
       gsap.ticker.remove(ticker);
       lenis.destroy();
     };

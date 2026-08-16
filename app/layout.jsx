@@ -5,6 +5,12 @@ import SmoothScroll from "../components/SmoothScroll";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://perlinabyl.fr";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {

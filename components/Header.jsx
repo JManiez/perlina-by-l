@@ -31,6 +31,7 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
+    document.documentElement.classList.toggle("menu-open", open);
     if (!open) return;
     const onKey = (e) => {
       if (e.key === "Escape") setOpen(false);
@@ -38,6 +39,7 @@ export default function Header() {
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
     return () => {
+      document.documentElement.classList.remove("menu-open");
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
     };
@@ -50,8 +52,8 @@ export default function Header() {
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.fromTo(
           overlay.current.querySelectorAll("a"),
-          { opacity: 0, y: 28 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.07, ease: "power3.out" }
+          { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.65, stagger: 0.06, ease: "power3.out" }
         );
       });
     },
@@ -59,26 +61,28 @@ export default function Header() {
   );
 
   return (
-    <header className={`site-header${solid || open ? " is-solid" : ""}`}>
+    <header className={`site-header${solid || open ? " is-solid" : ""}${open ? " is-open" : ""}`}>
       <div className="nav-inner">
         <Link href="/" className="logo" onClick={() => setOpen(false)} aria-label="Perlina By L — accueil">
           <span className="script">Perlina</span>
           <small>By L</small>
         </Link>
-        <nav aria-label="Principale">
-          <button
-            className={`burger${open ? " is-open" : ""}`}
-            type="button"
-            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-            aria-expanded={open}
-            aria-controls="site-menu"
-            onClick={() => setOpen((v) => !v)}
-          >
+        <button
+          className={`burger${open ? " is-open" : ""}`}
+          type="button"
+          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={open}
+          aria-controls="site-menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          <i aria-hidden="true">
             <span />
             <span />
             <span />
-          </button>
-          <ul id="site-menu" className="desktop">
+          </i>
+        </button>
+        <nav className="nav-desktop" aria-label="Principale">
+          <ul>
             {links.map((l) => (
               <li key={l.href}>
                 <Link
@@ -98,21 +102,29 @@ export default function Header() {
           </ul>
         </nav>
       </div>
-      <div ref={overlay} className={`menu-overlay${open ? " open" : ""}`} hidden={!open}>
+      <nav
+        ref={overlay}
+        id="site-menu"
+        className={`menu-overlay${open ? " open" : ""}`}
+        aria-label="Menu mobile"
+        aria-hidden={!open}
+        inert={!open ? true : undefined}
+      >
         {links.map((l) => (
           <Link
             key={l.href}
             href={l.href}
             className={pathname === l.href ? "active" : ""}
             onClick={() => setOpen(false)}
+            tabIndex={open ? 0 : -1}
           >
             {l.label}
           </Link>
         ))}
-        <Link href="/reservation" className="nav-cta-lg" onClick={() => setOpen(false)}>
+        <Link href="/reservation" className="nav-cta-lg" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
           Prendre rendez-vous
         </Link>
-      </div>
+      </nav>
     </header>
   );
 }
