@@ -71,6 +71,7 @@ section + section{padding-top:0}
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:120;
   background:transparent;
+  overflow:visible;
   transition:background .45s ease, box-shadow .45s ease, border-color .45s ease;
   border-bottom:1px solid transparent;
 }
@@ -86,9 +87,12 @@ section + section{padding-top:0}
   display:flex;align-items:center;justify-content:space-between;
   padding:1rem var(--gutter);
 }
-.logo{display:flex;flex-direction:column;line-height:1;text-decoration:none;z-index:130}
+.logo{display:flex;flex-direction:column;line-height:1.2;text-decoration:none;z-index:130;overflow:visible;padding-top:.12em}
 .logo .script{
   font-size:2.05rem;
+  line-height:1.25;
+  padding:.12em .08em 0;
+  overflow:visible;
   background:linear-gradient(120deg,#8f7130,#d4bc7a 48%,#8f7130);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
