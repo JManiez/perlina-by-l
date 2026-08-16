@@ -257,7 +257,7 @@ section + section{padding-top:0}
   padding-block:var(--section);
 }
 .indiba-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2.4rem,6vw,4.5rem);align-items:center}
-.indiba-logo-img{max-width:188px;height:auto;mix-blend-mode:multiply;margin:1.3rem 0 1.5rem}
+.indiba-logo-img{max-width:220px;width:100%;height:auto;margin:1.1rem 0 1.4rem;display:block}
 .indiba .khz{
   font-family:var(--font-serif), 'Cormorant Garamond', Georgia, serif;
   font-size:clamp(3.2rem,6vw,4.8rem);color:var(--or-fonce);line-height:1;display:block;margin:.4rem 0 1rem;

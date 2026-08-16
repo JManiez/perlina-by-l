@@ -123,7 +123,7 @@ export default function Home() {
         <div className="container indiba-grid">
           <FadeIn>
             <p className="eyebrow">La technologie</p>
-            <Image className="indiba-logo-img" src="/images/indiba-logo.jpg" alt="INDIBA Deep Beauty" width={400} height={163} />
+            <Image className="indiba-logo-img" src="/images/indiba-logo.png" alt="INDIBA — revitalizing lives" width={874} height={308} />
             <CountKhz />
             <p>
               <strong>INDIBA® EDNA PRO MAX</strong> — la radiofréquence monopolaire brevetée, référence de la
