@@ -1,4 +1,7 @@
 :root{
+  --font-script:'Great Vibes', cursive;
+  --font-serif:'Cormorant Garamond', Georgia, serif;
+  --font-sans:'Jost', 'Segoe UI', sans-serif;
   --ivoire:#f6f1e8;
   --ivoire-2:#efe8d8;
   --creme:#fbf7ef;
@@ -85,7 +88,7 @@ section + section{padding-top:0}
 .nav-inner{
   max-width:1220px;margin:0 auto;
   display:flex;align-items:center;justify-content:space-between;
-  padding:1rem var(--gutter);
+  padding:1.15rem var(--gutter) .95rem;
 }
 .logo{display:flex;flex-direction:column;line-height:1.2;text-decoration:none;z-index:130;overflow:visible;padding-top:.12em}
 .logo .script{
