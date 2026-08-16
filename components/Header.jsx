@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { href: "/", label: "Accueil" },
@@ -14,20 +13,47 @@ const links = [
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <header className="site-header">
       <div className="nav-inner">
         <Link href="/" className="logo" onClick={() => setOpen(false)} aria-label="Perlina By L — accueil">
-          <Image className="logo-mark" src="/images/logo-perlina.jpg" alt="Perlina By L" width={1200} height={546} priority style={{ height: 44, width: "auto" }} />
+          <span className="script">Perlina</span>
+          <small>By L</small>
         </Link>
-        <nav>
-          <button className="burger" aria-label="Menu" onClick={() => setOpen(!open)}>
+        <nav aria-label="Principale">
+          <button
+            className="burger"
+            type="button"
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={open}
+            aria-controls="site-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
             <span /><span /><span />
           </button>
-          <ul className={open ? "open" : ""}>
+          <ul id="site-menu" className={open ? "open" : ""}>
             {links.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className={pathname === l.href ? "active" : ""} onClick={() => setOpen(false)}>
+                <Link
+                  href={l.href}
+                  className={pathname === l.href ? "active" : ""}
+                  aria-current={pathname === l.href ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                >
                   {l.label}
                 </Link>
               </li>

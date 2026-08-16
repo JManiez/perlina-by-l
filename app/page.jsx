@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SectionTitle from "../components/SectionTitle";
 import Reveal from "../components/Reveal";
+import Silhouette from "../components/Silhouette";
 
 const GoldDefs = () => (
   <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true">
@@ -79,14 +80,11 @@ export default function Home() {
         <div className="container hero-grid">
           <div>
             <p className="hero-loc">La Grande-Motte · Institut de beauté</p>
-            <Image
-              className="hero-wordmark logo-mark"
-              src="/images/logo-perlina.jpg"
-              alt="Perlina By L"
-              width={1200}
-              height={546}
-              priority
-            />
+            <h1>
+              Votre institut
+              <span className="script">Perlina</span>
+            </h1>
+            <div className="byl">— BY L —</div>
             <span className="script tagline">Révélez votre beauté naturelle</span>
             <p className="lead">
               Un écrin de douceur au bord de la Méditerranée, où le savoir-faire esthétique rencontre la technologie{" "}
@@ -97,16 +95,7 @@ export default function Home() {
               <Link className="btn btn-ghost" href="/soins">La carte des soins</Link>
             </div>
           </div>
-          <div className="hero-illu">
-            <Image
-              className="logo-mark"
-              src="/images/logo-illustration.jpg"
-              alt="Illustration Perlina — femme au chignon entourée de perles"
-              width={1400}
-              height={851}
-              priority
-            />
-          </div>
+          <Silhouette />
         </div>
       </div>
 
