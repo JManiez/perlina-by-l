@@ -5,7 +5,6 @@ import FadeIn from "../components/gsap/FadeIn";
 import Hero from "../components/Hero";
 import MosaicFigure from "../components/MosaicFigure";
 import CountKhz from "../components/CountKhz";
-import IndibaLogo from "../components/IndibaLogo";
 
 const GoldDefs = () => (
   <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true">
@@ -128,7 +127,14 @@ export default function Home() {
         <div className="container indiba-grid">
           <FadeIn>
             <p className="eyebrow">La technologie</p>
-            <IndibaLogo />
+            <Image
+              className="indiba-logo-img"
+              src="/images/indiba-logo.png"
+              alt="INDIBA — revitalizing lives"
+              width={1796}
+              height={565}
+              priority={false}
+            />
             <CountKhz />
             <p>
               <strong>INDIBA® EDNA PRO MAX</strong> — la radiofréquence monopolaire brevetée, référence de la
