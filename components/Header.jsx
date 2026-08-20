@@ -61,47 +61,49 @@ export default function Header() {
   );
 
   return (
-    <header className={`site-header${solid || open ? " is-solid" : ""}${open ? " is-open" : ""}`}>
-      <div className="nav-inner">
-        <Link href="/" className="logo" onClick={() => setOpen(false)} aria-label="Perlina By L — accueil">
-          <span className="script">Perlina</span>
-          <small>By L</small>
-        </Link>
-        <button
-          className={`burger${open ? " is-open" : ""}`}
-          type="button"
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={open}
-          aria-controls="site-menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <i aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </i>
-        </button>
-        <nav className="nav-desktop" aria-label="Principale">
-          <ul>
-            {links.map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className={pathname === l.href ? "active" : ""}
-                  aria-current={pathname === l.href ? "page" : undefined}
-                >
-                  {l.label}
+    <>
+      <header className={`site-header${solid || open ? " is-solid" : ""}${open ? " is-open" : ""}`}>
+        <div className="nav-inner">
+          <Link href="/" className="logo" onClick={() => setOpen(false)} aria-label="Perlina By L — accueil">
+            <span className="script">Perlina</span>
+            <small>By L</small>
+          </Link>
+          <button
+            className={`burger${open ? " is-open" : ""}`}
+            type="button"
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={open}
+            aria-controls="site-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <i aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </i>
+          </button>
+          <nav className="nav-desktop" aria-label="Principale">
+            <ul>
+              {links.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className={pathname === l.href ? "active" : ""}
+                    aria-current={pathname === l.href ? "page" : undefined}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/reservation" className="nav-cta">
+                  Rendez-vous
                 </Link>
               </li>
-            ))}
-            <li>
-              <Link href="/reservation" className="nav-cta">
-                Rendez-vous
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+            </ul>
+          </nav>
+        </div>
+      </header>
       <nav
         ref={overlay}
         id="site-menu"
@@ -125,6 +127,6 @@ export default function Header() {
           Prendre rendez-vous
         </Link>
       </nav>
-    </header>
+    </>
   );
 }
