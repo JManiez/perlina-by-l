@@ -17,14 +17,13 @@ export default function Reservation() {
           Demander un <em>rendez-vous</em>
         </SectionTitle>
         <FadeIn>
-          <div style={{ marginTop: "3.2rem" }}>
+          <div className="resa-card">
             <ReservationForm />
           </div>
-          <div className="notice">
-            <strong>Bientôt :</strong> la réservation en ligne en temps réel, connectée à l&apos;agenda de
-            l&apos;institut, avec paiement sécurisé. En attendant, chaque demande est confirmée personnellement — c&apos;est
-            aussi ça, le sur-mesure.
-          </div>
+          <p className="notice">
+            La réservation en ligne en temps réel arrive bientôt. En attendant, chaque demande est lue et confirmée
+            par Lorie — c&apos;est aussi ça, le sur-mesure.
+          </p>
         </FadeIn>
       </div>
     </section>

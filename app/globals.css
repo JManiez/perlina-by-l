@@ -401,21 +401,75 @@ blockquote{
 /* ===== FORMULAIRES ===== */
 form{display:grid;gap:1.7rem}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:1.7rem}
-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:.55rem}
+label,.label-like{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:.55rem}
 input,select,textarea{
-  width:100%;padding:.55rem 0 .7rem;border:none;border-bottom:1px solid var(--line);
+  width:100%;padding:.7rem 0 .75rem;border:none;border-bottom:1px solid var(--line);
   background:transparent;font-family:var(--font-sans), Jost, sans-serif;font-size:1rem;color:var(--ink);
-  transition:border-color .3s;outline:none;border-radius:0;
+  transition:border-color .3s;outline:none;border-radius:0;min-height:44px;
 }
 input:focus,select:focus,textarea:focus{border-bottom-color:var(--or-fonce)}
-textarea{min-height:110px;resize:vertical}
+textarea{min-height:110px;resize:vertical;line-height:1.6}
+input::placeholder,textarea::placeholder{color:#c4b49a}
 
 /* ===== RÉSERVATION ===== */
-.resa-wrap{max-width:680px;margin:0 auto}
-.resa-confirm{border:1px solid var(--line);padding:2.6rem;margin-top:1rem;background:var(--blanc)}
-.resa-confirm h3{font-size:1.8rem;margin-bottom:1rem;font-weight:400}
-.recap{font-family:var(--font-serif), 'Cormorant Garamond', Georgia, serif;font-size:1.12rem;color:var(--ink);line-height:2;border-left:1px solid var(--or);padding-left:1.4rem;margin:1.3rem 0 1.8rem}
-.notice{margin-top:2.8rem;border-top:1px solid var(--line);padding-top:1.5rem;font-size:.88rem}
+.resa-wrap{max-width:720px;margin:0 auto}
+.resa-card{
+  margin-top:3rem;padding:clamp(1.6rem,4vw,2.6rem);
+  background:var(--blanc);border:1px solid var(--line);box-shadow:var(--shadow-sm);
+}
+.resa-form{gap:0}
+.resa-block{padding-bottom:2rem;margin-bottom:2rem;border-bottom:1px solid var(--line)}
+.resa-block:last-of-type{margin-bottom:0}
+.resa-block-h{display:flex;align-items:baseline;gap:.85rem;margin-bottom:1.35rem}
+.resa-block-h span{
+  font-size:.62rem;letter-spacing:.28em;color:var(--or-fonce);
+  font-family:var(--font-sans), Jost, sans-serif;
+}
+.resa-block-h h3{font-size:1.55rem;font-weight:400;margin:0}
+.resa-cats{
+  display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.1rem;
+}
+.resa-cats button{
+  font-family:var(--font-sans), Jost, sans-serif;
+  font-size:.72rem;letter-spacing:.08em;color:var(--ink-soft);
+  background:transparent;border:1px solid var(--line);padding:.55rem .9rem;
+  cursor:pointer;transition:border-color .25s, color .25s, background .25s;
+}
+.resa-cats button.is-on,.resa-pills button.is-on{
+  color:var(--or-fonce);border-color:var(--or-fonce);background:rgba(184,149,74,.08);
+}
+.resa-choices{display:grid;gap:.35rem}
+.resa-choices.compact{grid-template-columns:1fr 1fr;gap:.35rem .9rem}
+.resa-choice{
+  display:flex;align-items:baseline;gap:.8rem;padding:.7rem .15rem;
+  border-bottom:1px solid rgba(143,113,48,.12);cursor:pointer;
+}
+.resa-choice input{position:absolute;opacity:0;pointer-events:none}
+.resa-choice .n{flex:1;font-family:var(--font-serif), 'Cormorant Garamond', Georgia, serif;font-size:1.12rem;color:var(--ink)}
+.resa-choice .p{font-family:var(--font-serif), 'Cormorant Garamond', Georgia, serif;color:var(--or-fonce);white-space:nowrap}
+.resa-choice.is-on .n{color:var(--or-fonce)}
+.resa-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.15rem}
+.resa-pills button{
+  font-family:var(--font-sans), Jost, sans-serif;font-size:.78rem;
+  background:transparent;border:1px solid var(--line);color:var(--ink-soft);
+  padding:.55rem .85rem;cursor:pointer;min-height:44px;
+}
+.field-hint{font-size:.78rem;color:#9a8467;margin-top:.55rem}
+.field-err{font-size:.82rem;color:#8f4a30;margin-top:.7rem}
+label em{font-style:normal;letter-spacing:.08em;text-transform:none;color:#9a8467}
+.resa-submit{display:grid;justify-items:center;gap:.85rem;padding-top:.4rem;text-align:center}
+.resa-confirm{margin-top:0}
+.resa-confirm h3{font-size:clamp(1.7rem,3vw,2.1rem);margin:.4rem 0 1rem;font-weight:400}
+.resa-lead{font-size:.95rem;max-width:36rem}
+.resa-recap{display:grid;gap:1.15rem;margin:1.8rem 0 2rem;padding-left:1.4rem;border-left:1px solid var(--or)}
+.resa-recap dt{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--or-fonce);margin-bottom:.2rem}
+.resa-recap dd{font-family:var(--font-serif), 'Cormorant Garamond', Georgia, serif;font-size:1.18rem;color:var(--ink)}
+.resa-actions{margin-top:0}
+.resa-back{
+  display:block;margin:1.5rem auto 0;background:none;border:none;cursor:pointer;
+  font:inherit;font-size:.82rem;color:#9a8467;text-decoration:underline;
+}
+.notice{margin-top:2.4rem;border-top:1px solid var(--line);padding-top:1.5rem;font-size:.88rem;color:#9a8467}
 
 /* ===== FOOTER ===== */
 .site-footer{
@@ -498,4 +552,6 @@ textarea{min-height:110px;resize:vertical}
   .foot-grid{grid-template-columns:1fr;text-align:center}
   .orn.center,.foot-brand{align-items:center}
   .foot-brand{display:flex;flex-direction:column;align-items:center}
+  .resa-choices.compact{grid-template-columns:1fr}
+  .resa-card{padding:1.35rem 1.15rem 1.7rem}
 }
