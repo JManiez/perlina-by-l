@@ -34,7 +34,7 @@ const univers = [
   {
     title: "Onglerie",
     desc: "Manucure soignée, vernis semi-permanent, french : des mains sublimées.",
-    prix: "dès 25 €",
+    prix: "dès 20 €",
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="url(#goldIc)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M13 34 v-12 q0 -3 3 -3 q3 0 3 3 v6" />

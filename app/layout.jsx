@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SmoothScroll from "../components/SmoothScroll";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164 } from "../lib/contact";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://perlinabyl.fr";
 
@@ -18,7 +19,7 @@ export const metadata = {
     template: "%s · Perlina By L",
   },
   description:
-    "Perlina By L, institut de beauté à La Grande-Motte. Technologie INDIBA® Deep Beauty, onglerie, massages, épilations. 15 rue Frédéric Mistral — sur rendez-vous au 07 72 56 74 89.",
+    `Perlina By L, institut de beauté à La Grande-Motte. Technologie INDIBA® Deep Beauty, onglerie, massages, épilations. 15 rue Frédéric Mistral — sur rendez-vous au ${CONTACT_PHONE_DISPLAY}.`,
   openGraph: {
     title: "Perlina By L — Institut de beauté · La Grande-Motte",
     description: "Venez découvrir la technologie INDIBA® Deep Beauty et révéler votre beauté naturelle.",
@@ -30,10 +31,30 @@ export const metadata = {
   },
 };
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  name: "Perlina By L",
+  url: siteUrl,
+  telephone: CONTACT_PHONE_E164,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "15 rue Frédéric Mistral",
+    addressLocality: "La Grande-Motte",
+    postalCode: "34280",
+    addressCountry: "FR",
+  },
+  image: `${siteUrl}/images/salon-1.jpg`,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
