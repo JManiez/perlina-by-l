@@ -1,6 +1,45 @@
 import Link from "next/link";
 import SectionTitle from "../../components/SectionTitle";
 import FadeIn from "../../components/gsap/FadeIn";
+import BeforeAfterGallery from "../../components/BeforeAfterGallery";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164 } from "../../lib/contact";
+
+const AVANT_APRES = [
+  {
+    title: "INDIBA® Deep Beauty — soin visage",
+    items: [
+      {
+        src: "/images/avant-apres/indiba-visage-apres-1-seance.jpg",
+        width: 1402,
+        height: 1122,
+        alt: "Comparatif avant et après INDIBA Deep Beauty visage, résultat après la 1re séance",
+      },
+      {
+        src: "/images/avant-apres/indiba-visage-apres-3e-seance.jpg",
+        width: 1254,
+        height: 1254,
+        alt: "Comparatif avant et après INDIBA Deep Beauty visage, résultat après la 3e séance",
+      },
+    ],
+  },
+  {
+    title: "Lash lift coréen",
+    items: [
+      {
+        src: "/images/avant-apres/lashlift-regard-ouvert.jpg",
+        width: 1536,
+        height: 1024,
+        alt: "Comparatif avant et après lash lift coréen, regard ouvert et cils relevés",
+      },
+      {
+        src: "/images/avant-apres/lashlift-naturel-elegant.jpg",
+        width: 1536,
+        height: 1024,
+        alt: "Comparatif avant et après lash lift coréen, rendu naturel et élégant",
+      },
+    ],
+  },
+];
 
 export const metadata = { title: "Nos soins & tarifs" };
 
@@ -70,8 +109,8 @@ export default function Soins() {
           lead={
             <>
               L&apos;expertise beauté, entre technologie et élégance. Uniquement sur rendez-vous au{" "}
-              <a href="tel:+33772567489" className="link-u" style={{ color: "var(--or-fonce)" }}>
-                07 72 56 74 89
+              <a href={`tel:${CONTACT_PHONE_E164}`} className="link-u" style={{ color: "var(--or-fonce)" }}>
+                {CONTACT_PHONE_DISPLAY}
               </a>
               .
             </>
@@ -87,6 +126,7 @@ export default function Soins() {
           <a href="#epilation-femme">Épilations femme</a>
           <a href="#epilation-homme">Épilations homme</a>
           <a href="#avenir">À venir</a>
+          <a href="#avant-apres">Avant / après</a>
         </nav>
 
         <FadeIn className="svc-cat" as="div">
@@ -94,11 +134,11 @@ export default function Soins() {
             {ic.nail} Onglerie
           </h3>
           <div className="svc-list">
-            <Row n="Manucure simple" p="25 €" />
-            <Row n="Manucure + vernis basic" p="35 €" />
-            <Row n="Manucure + vernis semi-permanent" p="45 €" />
-            <Row n="Manucure + semi-permanent french" p="48 €" />
-            <Row n="Dépose" d="offerte si pose Perlina" p="8 €" />
+            <Row n="Manucure simple" p="20 €" />
+            <Row n="Manucure simple + vernis basic" p="25 €" />
+            <Row n="Manucure simple + vernis semi-permanent" p="35 €" />
+            <Row n="Manucure simple + vernis semi-permanent french" p="40 €" />
+            <Row n="Dépose" d="offerte si pose Perlina" p="10 €" />
           </div>
         </FadeIn>
 
@@ -167,12 +207,14 @@ export default function Soins() {
             {ic.etoile} À venir <span className="badge">Bientôt</span>
           </h3>
           <div className="svc-list">
-            <Row n="Browlift" d="simple / avec teinture hybride" p="55 € / 85 €" />
-            <Row n="Lash lift coréen" d="simple / avec teinture" p="55 € / 85 €" />
-            <Row n="Glow skin coréen" d="45 min / premium 1 h 15" p="89 € / 129 €" />
-            <Row n="Lift coréen" d="1 zone / demi-visage / visage complet" p="70 € / 110 € / 140 €" />
+            <Row n="Browlift — simple" p="55 €" />
+            <Row n="Browlift — avec teinture hybride" p="70 €" />
+            <Row n="Lash lift coréen — simple" p="55 €" />
+            <Row n="Lash lift coréen — avec teinture" p="70 €" />
           </div>
         </FadeIn>
+
+        <BeforeAfterGallery groups={AVANT_APRES} />
 
         <div className="center">
           <Link className="btn btn-or" href="/reservation">

@@ -2,17 +2,20 @@
 
 import { useMemo, useState } from "react";
 
-const TEL = "+33772567489";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164 } from "../lib/contact";
+
+const TEL = CONTACT_PHONE_E164;
 
 const CATS = [
   {
     id: "onglerie",
     label: "Onglerie",
     services: [
-      { name: "Manucure simple", price: "25 €" },
-      { name: "Manucure + vernis basic", price: "35 €" },
-      { name: "Manucure + vernis semi-permanent", price: "45 €" },
-      { name: "Manucure + semi-permanent french", price: "48 €" },
+      { name: "Manucure simple", price: "20 €" },
+      { name: "Manucure simple + vernis basic", price: "25 €" },
+      { name: "Manucure simple + vernis semi-permanent", price: "35 €" },
+      { name: "Manucure simple + vernis semi-permanent french", price: "40 €" },
+      { name: "Dépose ongles", price: "10 €" },
     ],
   },
   {
@@ -61,6 +64,17 @@ const CATS = [
       { name: "Épilation homme — dos + épaules", price: "27 €" },
       { name: "Épilation homme — ½ jambes", price: "28 €" },
       { name: "Épilation homme — jambes complètes", price: "30 €" },
+    ],
+  },
+  {
+    id: "avenir",
+    label: "À venir",
+    hint: "Browlift et lash lift — disponibilité à confirmer avec Lorie.",
+    services: [
+      { name: "Browlift — simple", price: "55 €" },
+      { name: "Browlift — avec teinture hybride", price: "70 €" },
+      { name: "Lash lift coréen — simple", price: "55 €" },
+      { name: "Lash lift coréen — avec teinture", price: "70 €" },
     ],
   },
   { id: "autre", label: "Autre", services: [{ name: "Autre / je ne sais pas encore", price: "" }] },
@@ -266,7 +280,7 @@ export default function ReservationForm() {
               required
               inputMode="tel"
               autoComplete="tel"
-              placeholder="07 72 56 74 89"
+              placeholder={CONTACT_PHONE_DISPLAY}
             />
           </div>
         </div>
